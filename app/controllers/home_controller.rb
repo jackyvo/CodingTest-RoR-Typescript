@@ -9,10 +9,12 @@ class HomeController < ApplicationController
 
   def edit_todo_item
     @todo_item.update(todo_item_params)
+    render json: Todo.all.order(:id).to_json
   end
 
   def reset_todo_items
     Todo.update_all(checked: false)
+    render json: Todo.all.order(:id).to_json
   end
 
   private
